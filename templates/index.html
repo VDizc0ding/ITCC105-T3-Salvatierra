@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Academic portfolio of Von David B. Salvatierra, BSIT major in Business Analytics.">
+
+    <title>Academic Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="topbar">
+        <a class="brand" href="#home">
+            <span class="brand-mark">Vd</span>
+            <span>
+                VON SALVATIERRA
+                <span class="brand-sub">ACADEMIC PORTFOLIO</span>
+            </span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+        <nav id="navLinks">
+            <a href="#home" class="active">Welcome!</a>
+            <a href="#about">About ME</a>
+            <a href="#academics">Academics & Works</a>
+            <a href="#reflections">Reflections</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- WELCOME -->
+        <section id="home" class="hero section-pad">
+
+            <div class="hero-copy">
+                <p class="eyebrow">JOSE RIZAL UNIVERSITY · STUDENT PORTFOLIO</p>
+
+                <h1>Sapienta Est<br><em>Potentia.</em></h1>
+
+                <p class="hero-lead">
+                    A collection of my academic work, projects, experiences,
+                    and growth as a College Student.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn primary" href="#academics">
+                        Explore my works!! <span>V</span>
+                    </a>
+
+                    <a class="text-link" href="#about">Get to know me :></a>
+                </div>
+            </div>
+
+            <div class="hero-art">
+                <div class="hero-photo-frame">
+                    {% if profile_images|length > 0 %}
+                    <img
+                        src="{{ url_for('static', filename=profile_images[0]) }}"
+                        alt="My Profile Picture"
+                        id="heroPhoto">
+                    {% else %}
+                    <div class="image-empty">Add your profile picture</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="hero-bottom">
+                <span>SCROLL TO EXPLORE</span>
+                <span class="scroll-line"></span>
+                <span>2026 — 2027</span>
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT ME -->
+        <section id="about" class="section-pad about-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">01 / PERSONAL INTRODUCTION</p>
+                <h2>A little<em> about me.</em></h2>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-image">
+
+                    {% if profile_images|length > 1 %}
+                    <img
+                        src="{{ url_for('static', filename=profile_images[1]) }}"
+                        alt="My Second Profile Picture"
+                        id="aboutPhoto">
+
+                    {% elif profile_images|length > 0 %}
+                    <img
+                        src="{{ url_for('static', filename=profile_images[0]) }}"
+                        alt="My Profile Picture"
+                        id="aboutPhoto">
+
+                    {% else %}
+                    <div class="image-empty">Add your portrait here</div>
+                    {% endif %}
+
+                    <div class="image-caption">VON DAVID B. SALVATIERRA</div>
+                </div>
+
+                <div class="about-content">
+
+                    <p class="intro">Hello! I'm Von David...</p>
+
+                    <p>
+                        I'm currently studying at Jose Rizal University,
+                        taking up Bachelor of Science in Information Technology,
+                        major in Business Analytics. I consider myself someone
+                        who is still learning, growing, and discovering new
+                        things along the way.
+                    </p>
+
+                    <p>
+                        As a college student, I enjoy exploring new ideas,
+                        gaining knowledge, and improving my skills through
+                        different academic activities. I also value the
+                        experiences and friendships I build along the way.
+                        I look forward to making the most out of my college
+                        years while continuing to grow both academically
+                        and personally.
+                    </p>
+
+                    <div class="profile-facts">
+
+                        <div>
+                            <span>PROGRAM</span>
+                            <strong>BSIT – Business Analytics</strong>
+                        </div>
+
+                        <div>
+                            <span>YEAR & SECTION</span>
+                            <strong>1st Year · 101BA</strong>
+                        </div>
+
+                        <div>
+                            <span>UNIVERSITY</span>
+                            <strong>Jose Rizal University</strong>
+                        </div>
+
+                        <div>
+                            <span>COURSE PORTFOLIO</span>
+                            <strong>ITC C105 - Computer Programming 1</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="interests">
+                        <span>INTERESTS</span>
+                        <p>
+                            Cartography · Public Speaking · Debate · Baseball ·
+                            Badminton · Technology
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ACADEMICS -->
+        <section id="academics" class="section-pad works-section">
+
+            <div class="section-heading">
+                <p class="eyebrow">02 / ACADEMICS & RELEVANT WORKS</p>
+
+                <h2>Things I've <em>DONE.</em></h2>
+
+                <p class="section-desc">
+                    A growing archive of class activities and projects.
+                </p>
+            </div>
+
+
+            <!-- COURSEWORKS -->
+            <div class="work-category" id="courseworks">
+
+                <div class="category-title">
+                    <span>01</span>
+                    <div>
+                        <h3>Courseworks & Products</h3>
+                    </div>
+                </div>
+
+
+                <!-- ACTIVITIES -->
+                <div class="gallery-block">
+
+                    <div class="gallery-title">
+                        <h3>Activities</h3>
+                        <span>{{ activity_images|length }} Images</span>
+                    </div>
+
+                    <div class="image-gallery">
+
+                        {% for image in activity_images %}
+
+                        <article class="gallery-card">
+
+                           <button
+    class="gallery-image-button"
+    type="button"
+    data-image="{{ url_for('static', filename=image) }}"
+    onclick="openImage(this.dataset.image)">
+
+                                <img
+                                    src="{{ url_for('static', filename=image) }}"
+                                    alt="PPT {{ loop.index }}"
+                                    loading="lazy">
+
+                            </button>
+
+                            <div class="gallery-info">
+                                <span>ACTIVITY {{ "%02d"|format(loop.index) }}</span>
+                                <h4>Activity {{ loop.index }}</h4>
+                            </div>
+
+                        </article>
+
+                        {% else %}
+
+                        <p class="empty-gallery">
+                            No activity images yet. Add your pictures to
+                            <code>static/images/activities/</code>.
+                        </p>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+
+                <!-- PROJECTS -->
+                <div class="gallery-block">
+
+                    <div class="gallery-title">
+                        <h3>Projects</h3>
+                        <span>{{ project_images|length }} Images</span>
+                    </div>
+
+                    <div class="image-gallery">
+
+                        {% for image in project_images %}
+
+                        <article class="gallery-card">
+
+                           <button
+    class="gallery-image-button"
+    type="button"
+    data-image="{{ url_for('static', filename=image) }}"
+    onclick="openImage(this.dataset.image)">
+
+                                <img
+                                    src="{{ url_for('static', filename=image) }}"
+                                    alt="Project {{ loop.index }}"
+                                    loading="lazy">
+
+                            </button>
+
+                            <div class="gallery-info">
+                                <span>PROJECT {{ "%02d"|format(loop.index) }}</span>
+                                <h4>Project {{ loop.index }}</h4>
+                            </div>
+
+                        </article>
+
+                        {% else %}
+
+                        <p class="empty-gallery">
+                            No project images yet. Add your pictures to
+                            <code>static/images/projects/</code>.
+                        </p>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+
+                <!-- QUIZZES AND EXAMS -->
+                <div class="gallery-block">
+
+                    <div class="gallery-title">
+                        <h3>Quiz/Exams</h3>
+                        <span>{{ quiz_images|length }} Images</span>
+                    </div>
+
+                    <div class="image-gallery">
+
+                        {% for image in quiz_images %}
+
+                        <article class="gallery-card">
+
+                           <button
+    class="gallery-image-button"
+    type="button"
+    data-image="{{ url_for('static', filename=image) }}"
+    onclick="openImage(this.dataset.image)">
+
+                                <img
+                                    src="{{ url_for('static', filename=image) }}"
+                                    alt="Quiz/Exam {{ loop.index }}"
+                                    loading="lazy">
+
+                            </button>
+
+                            <div class="gallery-info">
+                                <span>QUIZ / EXAM {{ "%02d"|format(loop.index) }}</span>
+                                <h4>Quiz/Exam {{ loop.index }}</h4>
+                            </div>
+
+                        </article>
+
+                        {% else %}
+
+                        <p class="empty-gallery">
+                            No quiz images yet. Add your pictures to
+                            <code>static/images/quizzes/</code>.
+                        </p>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- EXPERIENCE -->
+            <div class="work-category" id="experience">
+
+                <div class="category-title">
+                    <span>02</span>
+
+                    <div>
+                        <h3>Experience & Involvement</h3>
+                    </div>
+                </div>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">July 2026</span>
+
+                        <div>
+                            <h4>Vice President of Operations · JBECP – JRU Chapter</h4>
+                            <p>Describe your responsibilities, contributions, and what you learned.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">July 2026</span>
+
+                        <div>
+                            <h4>1st Year Representative · JPCS – JRU Chapter</h4>
+                            <p>Add your role, activities, and contributions to the organization.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">2025–2026</span>
+
+                        <div>
+                            <h4>Callidus Loquentium · Board of Committee Chairman</h4>
+                            <p>Supported committee coordination, program flow, and organizational activities.</p>
+                        </div>
+                    </div>
+
+        <!-- REFLECTIONS -->
+        <section id="reflections" class="section-pad reflections-section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">03 / LEARNING REFLECTIONS</p>
+
+                <h2>Looking back, <em>moving forward.</em></h2>
+
+            </div>
+
+
+            <div class="reflection-list">
+
+                <article class="reflection-card">
+
+                    <div class="reflection-number">01</div>
+
+                    <div class="reflection-body">
+
+                        <span class="tag">PRELIM TERM</span>
+
+                        <h3>Starting with the BASICS</h3>
+
+                        <div class="reflection-edit" contenteditable="true">
+                            During the Prelim Term, I mostly learned the fundamentals of programming, particularly creating flowcharts and writing simple codes. We initially started with JavaScript during the first few weeks before transitioning to Python, which gave me the opportunity to become familiar with different programming languages. At first, understanding the logic behind coding and organizing instructions through flowcharts was something I had to get used to. However, as we continued with our activities, I gradually understood how these concepts worked together. This term helped me build a foundation in programming and understand that even complex systems begin with simple instructions and processes.
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <article class="reflection-card">
+
+                    <div class="reflection-number">02</div>
+
+                    <div class="reflection-body">
+
+                        <span class="tag">MIDTERM</span>
+
+                        <h3>More COMPLEX Systems</h3>
+
+                        <div class="reflection-edit" contenteditable="true">
+                           During the Midterm Term, our lessons became more challenging as we started developing more complex systems using Python. We explored different ways of organizing code and applying what we had learned to create programs with more functions and capabilities. One of the highlights of this term was preparing our project proposal, where we started thinking about how programming could be applied to an actual problem. This experience helped me understand that coding is not only about making a program work but also about planning, identifying problems, and finding possible solutions. It also allowed me to improve my problem-solving skills and become more confident in working with Python.
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <article class="reflection-card">
+
+                    <div class="reflection-number">03</div>
+
+                    <div class="reflection-body">
+
+                        <span class="tag">FINAL TERM</span>
+
+                        <h3>Applying what I've LEARNED</h3>
+
+                        <div class="reflection-edit" contenteditable="true">
+                           For the Final Term, most of our efforts were focused on preparing and developing our project proposal and research through Python. This was probably the term where I discovered more of my capabilities as a programmer, especially when experimenting with different features and finding ways to make our project possible. I also became familiar with vibe coding, which helped me explore ideas, build features, and understand how different parts of a system could work together. One of the things I particularly enjoyed was working with maps and learning how to incorporate mapping features into our project. Overall, this term allowed me to apply the knowledge I gained from the previous terms to something more practical. It made me realize that there is still so much I can learn and create through programming, especially when I take the initiative to explore beyond our classroom lessons.
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLOSING -->
+        <section class="closing section-pad">
+
+            <p class="eyebrow">THE NEXT CHAPTER</p>
+
+            <h2>Dream It.<br><em>Code It.</em></h2>
+
+            <p>
+                This portfolio represents the work I've done so far
+                and the experiences that continue to shape me as a college student.
+            </p>
+
+            <a class="btn light" href="#home">Back to top ↑</a>
+
+        </section>
+
+    </main>
+
+
+    <!-- IMAGE VIEWER -->
+    <div class="image-modal" id="imageModal" onclick="closeImage()">
+
+        <button class="modal-close" type="button" aria-label="Close image">×</button>
+
+        <img id="modalImage" src="" alt="Expanded portfolio image">
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <span>© VDS2026</span>
+        <span>JOSE RIZAL UNIVERSITY · 80 SHAW BOULEVARD</span>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>
+function openImage(imageSource) {
+    const modal = document.getElementById("imageModal");
+    const image = document.getElementById("modalImage");
+
+    image.src = imageSource;
+    modal.classList.add("show");
+}
+
+function closeImage() {
+    document.getElementById("imageModal").classList.remove("show");
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeImage();
+    }
+});
+</script>
+
+</body>
+</html>
+
